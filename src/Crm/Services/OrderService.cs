@@ -6,7 +6,7 @@ public sealed class OrderService
 {
     public Order CreateOrder(OrderInfo orderInfo)
     {
-        // TODO: Validate input parameters.
+
         return new()
         {
             Id = orderInfo.Id,
