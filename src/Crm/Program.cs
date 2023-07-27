@@ -1,4 +1,5 @@
-﻿using Crm.Entities;
+﻿using Crm;
+using Crm.Entities;
 using Crm.Services;
 
 ClientService clientService = new();
@@ -15,29 +16,30 @@ void CreateClient()
     string? middleName = Console.ReadLine();
     if (string.IsNullOrEmpty(middleName)) 
         Console.WriteLine("Middle Name is required!");
-    short age = short.Parse(Console.ReadLine()!);
-    if (age <= 0) 
-        Console.WriteLine("Age is required!");
+    string ageInputStr = Console.ReadLine()!;
+    bool isAgeCorrect = short.TryParse(ageInputStr, out short age);
+    if (!isAgeCorrect)
+        Console.WriteLine("Please input correct value for age field!");
     string? passportNumber = Console.ReadLine();
     if (string.IsNullOrEmpty(passportNumber))
         Console.WriteLine("Passport Number is required!");
     Gender gender = (Gender)int.Parse(Console.ReadLine()!);
     if (!Enum.IsDefined(typeof(Gender), gender))
     {
-        throw new InvalidOperationException("Gender is required!");
+        throw new InvalidOperationException("Gender is required (0 = Male, 1 = Female!");
     }
 
    
 
 
-    Client newClient = clientService.CreateClient(
-        firstName!,
-        lastName!,
-        middleName!,
-        age,
-        passportNumber!,
-        gender
-    );
+    Client newClient = clientService.CreateClient(new ClientInfo() {
+        FirstName = firstName!,
+        LastName = lastName!,
+        MiddleName = middleName!,
+        Age = age,
+        PassportNumber = passportNumber!,
+        Gender = gender!
+    });
 
     Console.WriteLine("Client Name: {0}",
         string.Join(' ', newClient.FirstName, newClient.MiddleName, newClient.LastName));
@@ -57,9 +59,10 @@ void CreateOrder()
     string? Description = Console.ReadLine();
     if (string.IsNullOrEmpty(Description))
         Console.WriteLine("Description is required!");
-    short Price = short.Parse(Console.ReadLine()!);
-    if (Price <= 0) 
-        Console.WriteLine("Price is required!");
+    string PriceInputStr = Console.ReadLine()!;
+    bool isPriceCorrect = short.TryParse(PriceInputStr, out short Price);
+    if (!isPriceCorrect)
+        Console.WriteLine("Please input correct value for Price field!");
     string Date = Console.ReadLine()!;
     if (string.IsNullOrEmpty(Date))
         Console.WriteLine("Date is required!");
@@ -72,14 +75,14 @@ void CreateOrder()
         throw new InvalidOperationException("Type of delivery is required!");
     }
 
-    Order newOrder = orderService.CreateOrder(
-        Id!,
-        Description!,
-        Price!,
-        Date,
-        Address!,
-        Delivery
-    );
+    Order newOrder = orderService.CreateOrder(new OrderInfo() {
+        Id = Id!,
+        Description = Description!,
+        Price = Price,
+        Date = Date,
+        Address = Address!,
+        Delivery = Delivery
+    });
 
     Console.WriteLine("Order Info: {0}",
         string.Join(' ', newOrder.Id, newOrder.Description, newOrder.Price));

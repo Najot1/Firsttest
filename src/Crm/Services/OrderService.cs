@@ -4,24 +4,17 @@ namespace Crm.Services;
 
 public sealed class OrderService
 {
-    public Order CreateOrder(
-        string Id,
-        string Description,
-        short Price,
-        string Date,
-        string Address,
-        TypeOfDelivery Delivery
-    )
+    public Order CreateOrder(OrderInfo orderInfo)
     {
         // TODO: Validate input parameters.
         return new()
         {
-            Id = Id,
-            Description = Description,
-            Price = Price,
-            Date = Date,
-            Address = Address,
-            Delivery = Delivery
+            Id = orderInfo.Id,
+            Description = orderInfo.Description,
+            Price = orderInfo.Price,
+            Date = orderInfo.Date,
+            Address = orderInfo.Address,
+            Delivery = orderInfo.Delivery
         };
     }
 }
