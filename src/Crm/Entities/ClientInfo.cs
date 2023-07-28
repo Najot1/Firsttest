@@ -1,3 +1,5 @@
+using Crm.Entities;
+
 namespace Crm;
 
 public readonly struct ClientInfo
@@ -7,5 +9,5 @@ public readonly struct ClientInfo
     public readonly string MiddleName { get; init; }
     public readonly short Age { get; init; }
     public readonly string PassportNumber { get; init; }
-    public readonly enum Gender { get; init; }
+    public readonly Gender Gender { get; init; }
 }
