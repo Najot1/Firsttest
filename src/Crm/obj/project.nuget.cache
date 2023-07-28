@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L0vnDb9twwvLdLBE6YuIjOxsQStd9kw+/i34SZ4BpoERuaTBWXGZvVbPYhhBrYo2K684bh5fr9+osJeJNMNQtw==",
+  "dgSpecHash": "8OOiYHUK9FHYqEbKYRdBSzwqEFSomNH+kaxOJ38FrIq0IU2en+FZgkJiZ74dDUmiojgViasW+ggDBXuzzgv1rg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\crm-practice\\src\\Crm\\Crm.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.20\\microsoft.netcore.app.host.win-x64.6.0.20.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm\\Crm.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
