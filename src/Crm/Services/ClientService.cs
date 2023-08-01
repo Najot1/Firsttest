@@ -11,8 +11,7 @@ public sealed class ClientService
     
     public Client CreateClient(ClientInfo clientInfo)
     {
-        
-        return new()
+        Client client = new()
         {
             FirstName = clientInfo.FirstName,
             LastName = clientInfo.LastName,
@@ -24,6 +23,10 @@ public sealed class ClientService
             Email = clientInfo.Email,
             Password = clientInfo.Password
         };
+
+        clientList.Add(client);
+        
+        return client; 
     }
 }
 
