@@ -1,6 +1,8 @@
+
 namespace Crm.Entities;
 
-public sealed class Client
+
+public sealed class Client  
 {
   
     public required string FirstName
@@ -31,6 +33,22 @@ public sealed class Client
         get => PassportNumber ?? string.Empty;
         init => PassportNumber = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
+   
  
     public required Gender Gender { get; set; }
+ public required string Phone
+    {
+      get => Phone ?? string.Empty;
+      init => Phone = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+    }
+    public required string Email
+    {
+      get => Email ?? string.Empty;
+      set => Email = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
+    }
+    public required string Password
+    {
+      get => Password ?? string.Empty;
+      set => Password = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
+    }
 }
