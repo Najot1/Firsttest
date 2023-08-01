@@ -4,51 +4,62 @@ namespace Crm.Entities;
 
 public sealed class Client  
 {
-  
+    private readonly string _firstName;
     public required string FirstName
      { 
-        get => FirstName ?? string.Empty;
-        init => FirstName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _firstName ?? string.Empty;
+        init => _firstName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
-  
+
+    private readonly string _lastName;
     public required string LastName 
     { 
-        get => LastName ?? string.Empty;
-        init => LastName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _lastName ?? string.Empty;
+        init => _lastName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
   
+    private readonly string _middleName;
     public required string MiddleName
      { 
-        get => MiddleName ?? string.Empty;
-        init => MiddleName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _middleName ?? string.Empty;
+        init => _middleName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
+
+      private readonly short _age;
       public required short Age
       {
-        get => Age;
-        set => Age = value >= 18 ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _age;
+        init => _age = value >= 18 ? value : throw new ArgumentOutOfRangeException(nameof(value));
       }
 
+    private readonly string _passportNumber;
     public required string PassportNumber
     {
-        get => PassportNumber ?? string.Empty;
-        init => PassportNumber = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _passportNumber ?? string.Empty;
+        init => _passportNumber = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
    
  
     public required Gender Gender { get; set; }
- public required string Phone
+
+    private readonly string _phone;
+    public required string Phone
     {
-      get => Phone ?? string.Empty;
-      init => Phone = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+      get => _phone ?? string.Empty;
+      init => _phone = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
+
+    private readonly string _email;
     public required string Email
     {
-      get => Email ?? string.Empty;
-      set => Email = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
+      get => _email ?? string.Empty;
+      init => _email = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
+
+    private readonly string _password;
     public required string Password
     {
-      get => Password ?? string.Empty;
-      set => Password = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
+      get => _password ?? string.Empty;
+      init => _password = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
 }
