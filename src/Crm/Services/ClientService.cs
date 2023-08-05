@@ -3,12 +3,11 @@ using Crm.Entities;
 namespace Crm.Services;
 
 
-public sealed class ClientService
+public sealed class ClientService 
 {
 
-    private List<Client> clientList = new List<Client>();
-    
-    
+    private readonly List<Client> clientList = new();
+
     public Client CreateClient(ClientInfo clientInfo)
     {
         Client client = new()
@@ -27,5 +26,27 @@ public sealed class ClientService
         clientList.Add(client);
         
         return client; 
+    }
+
+    public void FindClient(List<Client> clientList)
+    {
+    
+        foreach (Client client in clientList)
+        {
+            Console.WriteLine(client);
+        }
+    }
+
+    internal void FindClient()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+abstract class DoSthClient
+{
+    public void DoSthWithClient()
+    {
+
     }
 }

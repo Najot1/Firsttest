@@ -39,8 +39,9 @@ public sealed class Client
         init => _passportNumber = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
    
- 
-    public required Gender Gender { get; set; }
+    
+    public required Gender Gender {get ; set ;}
+  
 
     private readonly string _phone;
     public required string Phone

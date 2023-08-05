@@ -1,11 +1,11 @@
-﻿
-using Crm;
+﻿using Crm;
 
 using Crm.Entities;
 using Crm.Services;
 
 ClientService clientService = new();
 CreateClient();
+
 
 void CreateClient()
 {
@@ -79,7 +79,7 @@ void CreateClient()
     Console.WriteLine("Client Age: {0}", newClient.Age);
     Console.WriteLine("Client Passport Number: {0}", newClient.PassportNumber);
     Console.WriteLine("Client Phone:{0}", newClient.Phone);
-    Console.WriteLine("Client Email and Password:{0}", newClient.Email, newClient.Password);
+    Console.WriteLine("Client Email and Password:{0}", newClient.Email, newClient.Password); 
 }
 
 OrderService orderService = new();
@@ -113,7 +113,7 @@ void CreateOrder()
     if (string.IsNullOrEmpty(Address)) 
         Console.WriteLine("Address is required!");
 
-    Console.WriteLine("Type of Delivery:");
+    Console.WriteLine("Type of Delivery(Express - 0,Standard - 1,Free - 2):");
     TypeOfDelivery Delivery = (TypeOfDelivery)int.Parse(Console.ReadLine()!);
     if (!Enum.IsDefined(typeof(TypeOfDelivery), Delivery))
     {
@@ -136,14 +136,39 @@ void CreateOrder()
     Console.WriteLine("Order Address: {0}", newOrder.Address);
     Console.WriteLine("Order Delivery Type: {0}", newOrder.Delivery);
 }
-string CreateC = Console.ReadLine()!;
-if (CreateC.Equals("Create Client"))
+
+
+
+void Find(Client newClient, Order newOrder)
 {
-    CreateClient();
+ClientService clientService1 = new();
+OrderService orderService1 = new();
+Console.WriteLine("Enter first and last name:");
+string find = Console.ReadLine()!;
+if (string.IsNullOrEmpty(find)) 
+    Console.WriteLine("First and Last Name are required!");
+if (find.Equals(newClient.FirstName + newClient.LastName))
+{
+    clientService1.FindClient();
+    Console.WriteLine("Enter Id and Descrition:");
+    string find2 = Console.ReadLine()!;
+    if (find2.Equals(newOrder.Id + newOrder.Description))
+    {
+        orderService1.FindOrder();
+    }
+}
 }
 
-string CreateO = Console.ReadLine()!;
-if (CreateO.Equals("Create Order"))
+
+
+
+Console.WriteLine("Create:"); 
+string Create = Console.ReadLine()!;
+if (Create.Equals("Client"))
 {
-    CreateOrder();
+    CreateClient();
+    if (Create.Equals("Order"))
+    {
+        CreateOrder();
+    }
 }

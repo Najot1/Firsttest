@@ -20,7 +20,7 @@ public sealed class Order
     public required  short Price
     {
         get => _price;
-        init => _price = value >= 18 ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        init => _price = value >= 1 ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
     
     private readonly string _date;
@@ -36,8 +36,10 @@ public sealed class Order
          get => _address ?? string.Empty;
         init => _address = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
-  
-    public required TypeOfDelivery Delivery { get; set; }
+    
+    public required TypeOfDelivery Delivery {get ; set ;}
+
+    
     
 
 
