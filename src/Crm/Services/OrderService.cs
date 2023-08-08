@@ -2,7 +2,7 @@ using Crm.Entities;
 
 namespace Crm.Services;
 
-public sealed class OrderService
+public sealed class OrderService : IOrderService
 {
     private readonly List<Order> orderList = new();
     public Order CreateOrder(OrderInfo orderInfo)
@@ -21,25 +21,40 @@ public sealed class OrderService
         return order; 
        
     }
-    public void FindOrder(List<Order> orderList)
+    public Order FindOrder(string id, string description)
     {
+        if (id is not {Length: > 0}) throw new ArgumentNullException(nameof(id));
+        if (description is not {Length: > 0}) throw new ArgumentNullException(nameof(description));
     
         foreach (Order order in orderList)
         {
-            Console.WriteLine(order);
+            if (order.Id.Equals(id) && order.Description.Equals(description))
+            return order; 
         }
+
+        throw new Exception("Order was not found!");
     }
 
-    internal void FindOrder()
+    public Order ChangeOrder(string newDescrition)
     {
-        throw new NotImplementedException();
-    }
-}
+        if (newDescrition is not {Length: > 0}) throw new ArgumentNullException(nameof(newDescrition));
+        foreach (Order order in orderList)
+        {
+            newDescrition =  order.Description;
+          
+            return order;
+        }
 
-abstract class DoSthOrder
-{
-    public void DoSthWithOrder()
+        throw new Exception("Description was not changed!");
+    }
+
+    public Order RemoveOrder(string removeOrder)
     {
+        if (removeOrder is not {Length: > 0}) throw new ArgumentNullException(nameof(removeOrder));
+        foreach (Order order in orderList)
+        if (removeOrder.Equals("Remove Order")) orderList.Remove(order);
 
+        throw new Exception("Order was not removed!");
     }
+
 }

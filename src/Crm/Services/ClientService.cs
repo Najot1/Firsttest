@@ -3,7 +3,7 @@ using Crm.Entities;
 namespace Crm.Services;
 
 
-public sealed class ClientService 
+public sealed class ClientService : IClientService
 {
 
     private readonly List<Client> clientList = new();
@@ -28,25 +28,45 @@ public sealed class ClientService
         return client; 
     }
 
-    public void FindClient(List<Client> clientList)
+    public Client FindClient(string firstName, string lastName)
     {
+        if (firstName is not {Length: > 0}) throw new ArgumentNullException(nameof(firstName));
+        if (lastName is not {Length: > 0}) throw new ArgumentNullException(nameof(lastName));
     
         foreach (Client client in clientList)
         {
-            Console.WriteLine(client);
+            if (client.FirstName.Equals(firstName) && client.LastName.Equals(lastName))
+            return client; 
         }
+
+        throw new Exception("Client was not found!");
     }
 
-    internal void FindClient()
+    public Client ChangeClient(string newFirstName, string newLastName)
     {
-        throw new NotImplementedException();
+        if (newFirstName is not {Length: > 0}) throw new ArgumentNullException(nameof(newFirstName));
+        if (newLastName is not {Length: > 0}) throw new ArgumentNullException(nameof(newLastName));
+        foreach (Client client in clientList)
+        {
+            newFirstName =  client.FirstName;
+            newLastName = client.LastName;
+            return client;
+        }
+        throw new Exception("First and Last Names were not changed!");
     }
-}
 
-abstract class DoSthClient
-{
-    public void DoSthWithClient()
+    public Client RemoveClient(string removeClient)
     {
+        if (removeClient is not {Length: > 0}) throw new ArgumentNullException(nameof(removeClient));
+        foreach (Client client in clientList)
+        {
+            if (removeClient.Equals("Client"))
+            {
+                clientList.Remove(client);
+                Console.WriteLine("Client was removed");
+            }
+        }
 
+        throw new Exception("Client was not removed!");
     }
 }
