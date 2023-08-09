@@ -3,15 +3,16 @@ using Crm.Entities;
 
 namespace Crm;
 
-public readonly struct ClientInfo 
+public struct ClientInfo 
 {
-    public readonly string FirstName { get; init; }
-    public readonly string LastName { get; init; }
-    public readonly string MiddleName { get; init; }
-    public readonly short Age { get; init; }
-    public readonly string PassportNumber { get; init; }
-    public readonly Gender Gender { get; init; }
-    public readonly string Phone { get; init; }
-    public readonly string Email { get; init; }
-    public readonly string Password { get; init; }
+    public int ID {get; set;}
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string MiddleName { get; set; }
+    public short Age { get; set; }
+    public string PassportNumber { get; set; }
+    public Gender Gender { get; set; }
+    public string Phone { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
 }

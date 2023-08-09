@@ -12,6 +12,7 @@ public sealed class ClientService : IClientService
     {
         Client client = new()
         {
+            ID = clientInfo.ID,
             FirstName = clientInfo.FirstName,
             LastName = clientInfo.LastName,
             MiddleName = clientInfo.MiddleName,
@@ -42,28 +43,41 @@ public sealed class ClientService : IClientService
         throw new Exception("Client was not found!");
     }
 
-    public Client ChangeClient(string newFirstName, string newLastName)
+    public Client ChangeClient(string newFirstName, string newLastName, int clientId)
     {
         if (newFirstName is not {Length: > 0}) throw new ArgumentNullException(nameof(newFirstName));
         if (newLastName is not {Length: > 0}) throw new ArgumentNullException(nameof(newLastName));
         foreach (Client client in clientList)
         {
-            newFirstName =  client.FirstName;
-            newLastName = client.LastName;
-            return client;
+            if (client.ID == clientId)
+            {
+                client.FirstName = newFirstName;
+                client.LastName = newLastName;
+            }
         }
+
         throw new Exception("First and Last Names were not changed!");
     }
 
-    public Client RemoveClient(string removeClient)
+    public Client RemoveClient(string removeClient, int clientId)
     {
         if (removeClient is not {Length: > 0}) throw new ArgumentNullException(nameof(removeClient));
-        foreach (Client client in clientList)
+        Client client1;
+        if (removeClient.Equals("Clinet"))
         {
-            if (removeClient.Equals("Client"))
+
+            foreach (Client client in clientList)
             {
-                clientList.Remove(client);
-                Console.WriteLine("Client was removed");
+                if (client.ID == clientId ) 
+                {
+                    client1 = client;
+                    if (client1 != null)
+                    {
+                        clientList.Remove(client1);
+                        Console.WriteLine("Client was removed");
+                    }
+                }
+                
             }
         }
 
