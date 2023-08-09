@@ -3,6 +3,7 @@ namespace Crm.Entities;
 
 public sealed class Order
 {
+    public int ID {get; set;}
     private string? _id;
     public required string Id
     {

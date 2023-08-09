@@ -9,7 +9,7 @@ public sealed class OrderService : IOrderService
     {
         Order order = new()
          {
-            Id = orderInfo.Id,
+            Id = orderInfo.GetId(),
             Description = orderInfo.Description,
             Price = orderInfo.Price,
             Date = orderInfo.Date,
@@ -35,24 +35,36 @@ public sealed class OrderService : IOrderService
         throw new Exception("Order was not found!");
     }
 
-    public Order ChangeOrder(string newDescrition)
+    public Order ChangeOrder(string newDescrition, int orderId)
     {
         if (newDescrition is not {Length: > 0}) throw new ArgumentNullException(nameof(newDescrition));
         foreach (Order order in orderList)
         {
-            newDescrition =  order.Description;
-          
-            return order;
+            if (order.ID == orderId)
+            {
+                order.Description = newDescrition;
+            }
         }
 
         throw new Exception("Description was not changed!");
     }
 
-    public Order RemoveOrder(string removeOrder)
+    public Order RemoveOrder(string removeOrder, int orderId)
     {
         if (removeOrder is not {Length: > 0}) throw new ArgumentNullException(nameof(removeOrder));
-        foreach (Order order in orderList)
-        if (removeOrder.Equals("Remove Order")) orderList.Remove(order);
+        Order order1;
+        if (removeOrder.Equals("Remove Order"))
+        {
+
+            foreach (Order order in orderList)
+            {
+                if (order.ID == orderId)
+                {
+                    order1 = order;
+                    orderList.Remove(order);
+                }
+            }
+        }
 
         throw new Exception("Order was not removed!");
     }
