@@ -6,7 +6,7 @@ namespace Crm.Entities;
 
 public sealed class Client  
 {
-  public int ID {get; set; } 
+  public int ID {get; set;}
   private string? _firstName;
   public required string FirstName
   { 

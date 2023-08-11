@@ -5,9 +5,6 @@ namespace Crm;
 public struct OrderInfo
 {
     public int ID {get; set;}
-
-    public string Id {get; set;}
-
     public string Description { get; set; }
     public short Price { get; set; }
     public string Date { get; set; }

@@ -43,7 +43,7 @@ public sealed class ClientService : IClientService
         throw new Exception("Client was not found!");
     }
 
-    public Client ChangeClient(string newFirstName, string newLastName, int clientId)
+    public Client? ChangeClient(string newFirstName, string newLastName, int clientId)
     {
         if (newFirstName is not {Length: > 0}) throw new ArgumentNullException(nameof(newFirstName));
         if (newLastName is not {Length: > 0}) throw new ArgumentNullException(nameof(newLastName));
@@ -53,34 +53,32 @@ public sealed class ClientService : IClientService
             {
                 client.FirstName = newFirstName;
                 client.LastName = newLastName;
+                return client;
             }
         }
 
-        throw new Exception("First and Last Names were not changed!");
+        return null;
     }
 
-    public Client RemoveClient(string removeClient, int clientId)
+    public Client? RemoveClient(string removeClient, int clientId)
     {
         if (removeClient is not {Length: > 0}) throw new ArgumentNullException(nameof(removeClient));
-        Client client1;
-        if (removeClient.Equals("Clinet"))
-        {
+        Client? clientToDelete = null;
 
-            foreach (Client client in clientList)
+        foreach (Client client in clientList)
+        {
+            if (client.ID == clientId ) 
             {
-                if (client.ID == clientId ) 
-                {
-                    client1 = client;
-                    if (client1 != null)
-                    {
-                        clientList.Remove(client1);
-                        Console.WriteLine("Client was removed");
-                    }
-                }
-                
+                clientToDelete = client;
+                break;
             }
         }
-
-        throw new Exception("Client was not removed!");
+        if (clientToDelete != null)
+        {
+            clientList.Remove(clientToDelete);
+            Console.WriteLine("Client was removed");
+        }
+        
+        return null;
     }
 }

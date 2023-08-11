@@ -9,7 +9,8 @@ CreateClient();
 
 void CreateClient()
 {
-    int Id = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Client ID:");
+    int id = Convert.ToInt16(Console.ReadLine());
     Console.WriteLine("FistName:");
     string? firstName = Console.ReadLine();
     if (string.IsNullOrEmpty(firstName))
@@ -63,7 +64,7 @@ void CreateClient()
 
 
     Client newClient = clientService.CreateClient(new ClientInfo() {
-        ID = Id,
+        ID = id,
         FirstName = firstName!,
         LastName = lastName!,
         MiddleName = middleName!,
@@ -82,68 +83,70 @@ void CreateClient()
     Console.WriteLine("Client Email and Password:{0}", string.Join(' ', newClient.Email, newClient.Password)); 
 }
 
-// IOrderService orderService = new OrderService();
-// CreateOrder();
+IOrderService orderService = new OrderService();
+CreateOrder();
 
-// void CreateOrder()
-// {
-//     Console.WriteLine("Order ID:");
-//     string? id = Console.ReadLine();
-//     if (string.IsNullOrEmpty(id))
-//         Console.WriteLine("Order Id is required!");
+void CreateOrder()
+{
 
-//     Console.WriteLine("Description:");
-//     string? description = Console.ReadLine();
-//     if (string.IsNullOrEmpty(description))
-//         Console.WriteLine("Description is required!");
+    Console.WriteLine("Order ID:");
+    string? Id = Console.ReadLine();
+    bool isIdCorrect = int.TryParse(Id, out int id);
+    if (!isIdCorrect)
+        Console.WriteLine("Order Id is required!");
 
-//     Console.WriteLine("Price:");
-//     string PriceInputStr = Console.ReadLine()!;
-//     bool isPriceCorrect = short.TryParse(PriceInputStr, out short price);
-//     if (!isPriceCorrect)
-//         Console.WriteLine("Please input correct value for Price field!");
+    Console.WriteLine("Description:");
+    string? description = Console.ReadLine();
+    if (string.IsNullOrEmpty(description))
+        Console.WriteLine("Description is required!");
 
-//     Console.WriteLine("Date:");
-//     string date = Console.ReadLine()!;
-//     if (string.IsNullOrEmpty(date))
-//         Console.WriteLine("Date is required!");
+    Console.WriteLine("Price:");
+    string PriceInputStr = Console.ReadLine()!;
+    bool isPriceCorrect = short.TryParse(PriceInputStr, out short price);
+    if (!isPriceCorrect)
+        Console.WriteLine("Please input correct value for Price field!");
 
-//     Console.WriteLine("Address:");
-//     string? address = Console.ReadLine();
-//     if (string.IsNullOrEmpty(address)) 
-//         Console.WriteLine("Address is required!");
+    Console.WriteLine("Date:");
+    string date = Console.ReadLine()!;
+    if (string.IsNullOrEmpty(date))
+        Console.WriteLine("Date is required!");
 
-//     Console.WriteLine("Type of Delivery(Express - 0,Standard - 1,Free - 2):");
-//     TypeOfDelivery delivery = (TypeOfDelivery)int.Parse(Console.ReadLine()!);
-//     if (!Enum.IsDefined(typeof(TypeOfDelivery), delivery))
-//     {
-//         throw new InvalidOperationException("Type of delivery is required!");
-//     }
+    Console.WriteLine("Address:");
+    string? address = Console.ReadLine();
+    if (string.IsNullOrEmpty(address)) 
+        Console.WriteLine("Address is required!");
 
-//     Order newOrder = orderService.CreateOrder(new OrderInfo() {
-//         Id = id!,
-//         Description = description!,
-//         Price = price,
-//         Date = date,
-//         Address = address!,
-//         Delivery = delivery
-//     });
+    Console.WriteLine("Type of Delivery(Express - 0,Standard - 1,Free - 2):");
+    TypeOfDelivery delivery = (TypeOfDelivery)int.Parse(Console.ReadLine()!);
+    if (!Enum.IsDefined(typeof(TypeOfDelivery), delivery))
+    {
+        throw new InvalidOperationException("Type of delivery is required!");
+    }
 
-//     Console.WriteLine("Order Info: {0}", string.Join(' ', newOrder.Id, newOrder.Description, newOrder.Price));
-//     Console.WriteLine("Order Date: {0}", newOrder.Date);
-//     Console.WriteLine("Order Address: {0}", newOrder.Address);
-//     Console.WriteLine("Order Delivery Type: {0}", newOrder.Delivery);
-// }
+   Order newOrder = orderService.CreateOrder(new OrderInfo() {
+        ID = id,
+        Description = description!,
+        Price = price,
+        Date = date,
+        Address = address!,
+        Delivery = delivery
+    });
+
+    Console.WriteLine("Order Info: {0}", string.Join(' ', newOrder.ID, newOrder.Description, newOrder.Price));
+    Console.WriteLine("Order Date: {0}", newOrder.Date);
+    Console.WriteLine("Order Address: {0}", newOrder.Address);
+    Console.WriteLine("Order Delivery Type: {0}", newOrder.Delivery);
+}
 
 
 
 
-Console.WriteLine("Enter new First and Last names:");
-string newFirstName = Console.ReadLine()!;
-string newLastName = Console.ReadLine()!;
-int clientId = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Enter new First and Last names:");
+// string newFirstName = Console.ReadLine()!;
+// string newLastName = Console.ReadLine()!;
+// int clientId = Convert.ToInt16(Console.ReadLine());
 
-Client client = clientService.ChangeClient(newFirstName!, newLastName!, clientId);
+// Client client = clientService.ChangeClient(newFirstName!, newLastName!, clientId);
 
 // Console.WriteLine("Client Name: {0}", string.Join(' ', client.FirstName, client.MiddleName, client.LastName));
 // Console.WriteLine("Client Age: {0}", client.Age);
@@ -154,9 +157,10 @@ Client client = clientService.ChangeClient(newFirstName!, newLastName!, clientId
 
 
 
-Console.WriteLine("Remove:");
-string removeClient = Console.ReadLine()!;
-clientService.RemoveClient(removeClient, clientId);
+// Console.WriteLine("Remove:");
+// string removeClient = Console.ReadLine()!;
+// int clientId = Convert.ToInt16(Console.ReadLine());
+// Client clientToDelete = clientService.RemoveClient(removeClient, clientId);
 
 
 
@@ -180,7 +184,7 @@ clientService.RemoveClient(removeClient, clientId);
 
 
 // Console.WriteLine("Enter Order Id and Description name:");
-// string id = Console.ReadLine()!;
+// int orderId = Convert.ToInt16(Console.ReadLine());
 // string description = Console.ReadLine()!;
 // Order order = orderService.FindOrder(id!, description!)!;
 

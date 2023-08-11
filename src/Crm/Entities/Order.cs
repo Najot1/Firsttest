@@ -4,13 +4,6 @@ namespace Crm.Entities;
 public sealed class Order
 {
     public int ID {get; set;}
-    private string? _id;
-    public required string Id
-    {
-        get => _id ?? string.Empty;
-        set => _id = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
-    }
-   
     private string? _description;
     public required string Description
     {

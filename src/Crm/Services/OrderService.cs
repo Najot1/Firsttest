@@ -9,7 +9,7 @@ public sealed class OrderService : IOrderService
     {
         Order order = new()
          {
-            Id = orderInfo.GetId(),
+            ID = orderInfo.ID,
             Description = orderInfo.Description,
             Price = orderInfo.Price,
             Date = orderInfo.Date,
@@ -21,21 +21,21 @@ public sealed class OrderService : IOrderService
         return order; 
        
     }
-    public Order FindOrder(string id, string description)
+    public Order FindOrder(int id, string description)
     {
-        if (id is not {Length: > 0}) throw new ArgumentNullException(nameof(id));
+        if (id is >= 0) throw new ArgumentNullException(nameof(id));
         if (description is not {Length: > 0}) throw new ArgumentNullException(nameof(description));
     
         foreach (Order order in orderList)
         {
-            if (order.Id.Equals(id) && order.Description.Equals(description))
+            if (order.ID.Equals(id) && order.Description.Equals(description))
             return order; 
         }
 
         throw new Exception("Order was not found!");
     }
 
-    public Order ChangeOrder(string newDescrition, int orderId)
+    public Order? ChangeOrder(string newDescrition, int orderId)
     {
         if (newDescrition is not {Length: > 0}) throw new ArgumentNullException(nameof(newDescrition));
         foreach (Order order in orderList)
@@ -43,30 +43,33 @@ public sealed class OrderService : IOrderService
             if (order.ID == orderId)
             {
                 order.Description = newDescrition;
+                return order;
             }
         }
 
-        throw new Exception("Description was not changed!");
+        return null;
     }
 
-    public Order RemoveOrder(string removeOrder, int orderId)
+    public Order? RemoveOrder(string removeOrder, int orderId)
     {
         if (removeOrder is not {Length: > 0}) throw new ArgumentNullException(nameof(removeOrder));
-        Order order1;
-        if (removeOrder.Equals("Remove Order"))
-        {
+        Order? orderToDelete = null;
 
-            foreach (Order order in orderList)
+        foreach (Order order in orderList)
+        {
+            if (order.ID == orderId)
             {
-                if (order.ID == orderId)
-                {
-                    order1 = order;
-                    orderList.Remove(order);
-                }
+                orderToDelete = order;
+                break;
             }
         }
+        if (orderToDelete != null)
+        {
+            orderList.Remove(orderToDelete);
+            Console.WriteLine("Order Removed!");
+        }
 
-        throw new Exception("Order was not removed!");
+        return null;
     }
 
 }
