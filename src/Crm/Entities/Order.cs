@@ -3,36 +3,37 @@ namespace Crm.Entities;
 
 public sealed class Order
 {
- 
-    public required string Id
-    {
-        get => Id ?? string.Empty;
-        init => Id = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
-    }
+    public int ID {get; set;}
+    private string? _description;
     public required string Description
     {
-        get => Description ?? string.Empty;
-        init => Description = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _description ?? string.Empty;
+        set => _description = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
-    public required  short Price 
+    private short _price;
+    public required  short Price
     {
-        get => Price;
-        set => Price = value >= 18 ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _price;
+        set => _price = value >= 1 ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
- 
+    
+    private string? _date;
     public required string Date 
     {
-        get => Date ?? string.Empty;
-        init => Date = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        get => _date ?? string.Empty;
+        set => _date = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
- 
+    
+    private string? _address;
     public required string Address 
     {
-         get => Address ?? string.Empty;
-        init => Address = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+         get => _address ?? string.Empty;
+        set => _address = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
-  
-    public required TypeOfDelivery Delivery { get; set; }
+    
+    public required TypeOfDelivery Delivery {get ; set ;}
+
+    
     
 
 
