@@ -1,100 +1,101 @@
-﻿using Crm;
+﻿using Crm.DataAccess;
+using Crm.BusinessLogic;
 
-using Crm.Entities;
-using Crm.Services;
-
-IClientService clientService = new ClientService();
-CreateClient();
+// IClientService clientService = new ClientService();
+// CreateClient();
 
 
-void CreateClient()
-{
-    Console.WriteLine("Client ID:");
-    int id = Convert.ToInt16(Console.ReadLine());
-    Console.WriteLine("FistName:");
-    string? firstName = Console.ReadLine();
-    if (string.IsNullOrEmpty(firstName))
-        Console.WriteLine("First Name is required!");
+// void CreateClient()
+// {
+//     Console.WriteLine("ID:");
+//     string IDClient = Console.ReadLine()!;
+//     bool isIDCorrect = int.TryParse(IDClient, out int id);
+//     if (!isIDCorrect)
+//         Console.WriteLine("Please input correct value for ID field!");
 
-    Console.WriteLine("LastName:");
-    string? lastName = Console.ReadLine();
-    if (string.IsNullOrEmpty(lastName)) 
-        Console.WriteLine("Last Name is required!");
+//     Console.WriteLine("FistName:");
+//     string? firstName = Console.ReadLine();
+//     if (string.IsNullOrEmpty(firstName))
+//         Console.WriteLine("First Name is required!");
 
-    Console.WriteLine("MiddleName:");
-    string? middleName = Console.ReadLine();
-    if (string.IsNullOrEmpty(middleName)) 
-        Console.WriteLine("Middle Name is required!");
+//     Console.WriteLine("LastName:");
+//     string? lastName = Console.ReadLine();
+//     if (string.IsNullOrEmpty(lastName)) 
+//         Console.WriteLine("Last Name is required!");
 
-    Console.WriteLine("Age:");
-    string ageInputStr = Console.ReadLine()!;
-    bool isAgeCorrect = short.TryParse(ageInputStr, out short age);
-    if (!isAgeCorrect)
-        Console.WriteLine("Please input correct value for age field!");
+//     Console.WriteLine("MiddleName:");
+//     string? middleName = Console.ReadLine();
+//     if (string.IsNullOrEmpty(middleName)) 
+//         Console.WriteLine("Middle Name is required!");
 
-    Console.WriteLine("PassportNumber:");    
-    string? passportNumber = Console.ReadLine();
-    if (string.IsNullOrEmpty(passportNumber))
-        Console.WriteLine("Passport Number is required!");
+//     Console.WriteLine("Age:");
+//     string ageInputStr = Console.ReadLine()!;
+//     bool isAgeCorrect = short.TryParse(ageInputStr, out short age);
+//     if (!isAgeCorrect)
+//         Console.WriteLine("Please input correct value for age field!");
 
-    Console.WriteLine("Gender(0=Male,1=Female):");
-    Gender gender = (Gender)int.Parse(Console.ReadLine()!);
-    if (!Enum.IsDefined(typeof(Gender), gender))
-    {
-        throw new InvalidOperationException("Gender is required (0 = Male, 1 = Female!");
-    }
+//     Console.WriteLine("PassportNumber:");    
+//     string? passportNumber = Console.ReadLine();
+//     if (string.IsNullOrEmpty(passportNumber))
+//         Console.WriteLine("Passport Number is required!");
 
-    Console.WriteLine("PhoneNumber:");
-    string? phone = Console.ReadLine();
-    if (string.IsNullOrEmpty(middleName)) 
-        Console.WriteLine("PhomeNumber is required!");
+//     Console.WriteLine("Gender(0=Male,1=Female):");
+//     Gender gender = (Gender)int.Parse(Console.ReadLine()!);
+//     if (!Enum.IsDefined(typeof(Gender), gender))
+//     {
+//         throw new InvalidOperationException("Gender is required (0 = Male, 1 = Female!");
+//     }
 
-    Console.WriteLine("Email:");
-    string? email = Console.ReadLine();
-    if (string.IsNullOrEmpty(middleName)) 
-        Console.WriteLine("Email is required!");
+//     Console.WriteLine("PhoneNumber:");
+//     string? phone = Console.ReadLine();
+//     if (string.IsNullOrEmpty(middleName)) 
+//         Console.WriteLine("PhomeNumber is required!");
 
-    Console.WriteLine("Password:");
-    string? password = Console.ReadLine();
-    if (string.IsNullOrEmpty(middleName)) 
-        Console.WriteLine("Password is required!");
+//     Console.WriteLine("Email:");
+//     string? email = Console.ReadLine();
+//     if (string.IsNullOrEmpty(middleName)) 
+//         Console.WriteLine("Email is required!");
+
+//     Console.WriteLine("Password:");
+//     string? password = Console.ReadLine();
+//     if (string.IsNullOrEmpty(middleName)) 
+//         Console.WriteLine("Password is required!");
 
 
    
 
 
-    Client newClient = clientService.CreateClient(new ClientInfo() {
-        ID = id,
-        FirstName = firstName!,
-        LastName = lastName!,
-        MiddleName = middleName!,
-        Age = age,
-        PassportNumber = passportNumber!,
-        Gender = gender!,
-        Phone = phone!,
-        Email = email!,
-        Password = password!
-    });
+//     Client newClient = clientService.CreateClient(new ClientInfo() {
+//         ID = id,
+//         FirstName = firstName!,
+//         LastName = lastName!,
+//         MiddleName = middleName!,
+//         Age = age,
+//         PassportNumber = passportNumber!,
+//         Gender = gender!,
+//         Phone = phone!,
+//         Email = email!,
+//         Password = password!
+//     });
 
-    Console.WriteLine("Client Name: {0}", string.Join(' ', newClient.FirstName, newClient.MiddleName, newClient.LastName));
-    Console.WriteLine("Client Age: {0}", newClient.Age);
-    Console.WriteLine("Client Passport Number: {0}", newClient.PassportNumber);
-    Console.WriteLine("Client Phone:{0}", newClient.Phone);
-    Console.WriteLine("Client Email and Password:{0}", string.Join(' ', newClient.Email, newClient.Password)); 
-}
+//     Console.WriteLine("Client Name: {0}", string.Join(' ', newClient.ID, newClient.FirstName, newClient.MiddleName, newClient.LastName));
+//     Console.WriteLine("Client Age: {0}", newClient.Age);
+//     Console.WriteLine("Client Passport Number: {0}", newClient.PassportNumber);
+//     Console.WriteLine("Client Phone:{0}", newClient.Phone);
+//     Console.WriteLine("Client Email and Password:{0}", string.Join(' ', newClient.Email, newClient.Password)); 
+// }
 
 IOrderService orderService = new OrderService();
 CreateOrder();
 
 void CreateOrder()
 {
-
     Console.WriteLine("Order ID:");
-    string? Id = Console.ReadLine();
-    bool isIdCorrect = int.TryParse(Id, out int id);
-    if (!isIdCorrect)
-        Console.WriteLine("Order Id is required!");
-
+    string IdOrder = Console.ReadLine()!;
+    bool isIDCorrect = int.TryParse(IdOrder, out int id);
+    if (!isIDCorrect)
+        Console.WriteLine("Please input correct value for ID field!");
+        
     Console.WriteLine("Description:");
     string? description = Console.ReadLine();
     if (string.IsNullOrEmpty(description))
@@ -123,19 +124,28 @@ void CreateOrder()
         throw new InvalidOperationException("Type of delivery is required!");
     }
 
+    Console.WriteLine("Order State (Pending = 0,Approved = 1,Cancelled = 2):");
+    OrderState state = (OrderState)int.Parse(Console.ReadLine()!);
+    if (!Enum.IsDefined(typeof(OrderState), state))
+    {
+        throw new InvalidOperationException("Order State is not correct!");
+    }
+
    Order newOrder = orderService.CreateOrder(new OrderInfo() {
         ID = id,
         Description = description!,
         Price = price,
         Date = date,
         Address = address!,
-        Delivery = delivery
+        Delivery = delivery,
+        State = state
     });
 
     Console.WriteLine("Order Info: {0}", string.Join(' ', newOrder.ID, newOrder.Description, newOrder.Price));
     Console.WriteLine("Order Date: {0}", newOrder.Date);
     Console.WriteLine("Order Address: {0}", newOrder.Address);
     Console.WriteLine("Order Delivery Type: {0}", newOrder.Delivery);
+    Console.WriteLine("Order State: {0}", newOrder.State);
 }
 
 
@@ -208,3 +218,23 @@ void CreateOrder()
 //     }
 //     else return;
 // }
+
+// Console.WriteLine("Enter Order Id and Order State:");
+// int orderId = Convert.ToInt16(Console.ReadLine());
+// OrderState newOrderState = (OrderState)int.Parse(Console.ReadLine()!);
+// Order order = orderService.SetState(newOrderState, orderId)!;
+// Console.WriteLine("Order State: {0}", order.State);
+
+Console.WriteLine("Create:");
+string Cr = Console.ReadLine()!;
+if (Cr.Equals("Order"))
+{
+    CreateOrder();
+
+}
+
+// Order counter = orderService.ShowOrderPending()!;
+// Console.WriteLine("Count: {0}", counter.Count);
+
+Order counter2 = orderService.ShowOrderCount()!;
+Console.WriteLine("Order Count: {0}", counter2.Count);

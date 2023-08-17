@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8OOiYHUK9FHYqEbKYRdBSzwqEFSomNH+kaxOJ38FrIq0IU2en+FZgkJiZ74dDUmiojgViasW+ggDBXuzzgv1rg==",
+  "dgSpecHash": "W5dlh1OM+4B7IHNnicMybRfo+cTOSk1GSUOjkwFTb9Nfkjd9rFjlwk/8VZvVFohPa6gZJywb03oinY0PQqaPWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm\\Crm.csproj",
+  "projectFilePath": "C:\\Users\\user\\Documents\\crm-practice\\src\\crm\\Crm.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

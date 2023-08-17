@@ -28,3 +28,8 @@ C:\Users\user\Documents\crm-practice\src\Crm\obj\Debug\net7.0\refint\Crm.dll
 C:\Users\user\Documents\crm-practice\src\Crm\obj\Debug\net7.0\Crm.pdb
 C:\Users\user\Documents\crm-practice\src\Crm\obj\Debug\net7.0\Crm.genruntimeconfig.cache
 C:\Users\user\Documents\crm-practice\src\Crm\obj\Debug\net7.0\ref\Crm.dll
+C:\Users\user\Documents\crm-practice\src\Crm\bin\Debug\net7.0\Crm.BusinessLogic.dll
+C:\Users\user\Documents\crm-practice\src\Crm\bin\Debug\net7.0\Crm.DataAccess.dll
+C:\Users\user\Documents\crm-practice\src\Crm\bin\Debug\net7.0\Crm.BusinessLogic.pdb
+C:\Users\user\Documents\crm-practice\src\Crm\bin\Debug\net7.0\Crm.DataAccess.pdb
+C:\Users\user\Documents\crm-practice\src\Crm\obj\Debug\net7.0\Crm.csproj.CopyComplete

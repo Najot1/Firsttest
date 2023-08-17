@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net6.0": {
+      "Crm.BusinessLogic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Crm.DataAccess": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Crm.BusinessLogic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Crm.BusinessLogic.dll": {}
+        }
+      },
+      "Crm.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Crm.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Crm.DataAccess.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Crm.BusinessLogic/1.0.0": {
+      "type": "project",
+      "path": "../Crm.BusinessLogic/Crm.BusinessLogic.csproj",
+      "msbuildProject": "../Crm.BusinessLogic/Crm.BusinessLogic.csproj"
+    },
+    "Crm.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../Crm.DataAccess/Crm.DataAccess.csproj",
+      "msbuildProject": "../Crm.DataAccess/Crm.DataAccess.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net6.0": [
+      "Crm.BusinessLogic >= 1.0.0",
+      "Crm.DataAccess >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\user\\.nuget\\packages\\": {}
@@ -23,15 +61,22 @@
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net6.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
-          "projectReferences": {}
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm.BusinessLogic\\Crm.BusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm.BusinessLogic\\Crm.BusinessLogic.csproj"
+            },
+            "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm.DataAccess\\Crm.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm.DataAccess\\Crm.DataAccess.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -41,8 +86,8 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "imports": [
           "net461",
           "net462",
@@ -59,7 +104,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
       }
     }
   }
