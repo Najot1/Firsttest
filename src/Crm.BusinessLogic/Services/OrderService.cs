@@ -89,44 +89,44 @@ public sealed class OrderService : IOrderService
         return null;
     }
 
-    public Order? ShowOrderCount()
+    public int ShowOrderCount()
     {
-        Order counter2 = new() {Count = 1};
+        int counter2 = 0;
         foreach (Order order in orderList)
         {
-            if (order.ID > 1 ) 
-                counter2.Count++;
+            if (order.ID >= 1 ) 
+                counter2++;
         }
         return counter2;
     
     }
-    public Order? ShowOrderPending()
+    public int ShowOrderPending()
     {
-        Order counter3 = new() {Count = 0};
+        int counter3 = 0;
         foreach (Order order in orderList)
         {
             if (order.State == OrderState.Pending)
-                counter3.Count++;
+                counter3++;
         }
         return counter3;
     }
-    public Order? ShowOrderApproved()
+    public int ShowOrderApproved()
     {
-        Order counter4 = new() {Count = 0};
+        int counter4 = 0;
         foreach (Order order in orderList)
         {
             if (order.State == OrderState.Approved)
-                counter4.Count++;
+                counter4++;
         }
         return counter4;
     }
-    public Order? ShowOrderCancelled()
+    public int ShowOrderCancelled()
     {
-        Order counter5 = new() {Count = 0};
+        int counter5 = 0;
         foreach (Order order in orderList)
         {
             if (order.State == OrderState.Cancelled)
-                counter5.Count++;
+                counter5++;
         }
         return counter5;
     }

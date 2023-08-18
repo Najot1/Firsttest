@@ -83,13 +83,13 @@ public sealed class ClientService : IClientService
         
         return null;
     }
-    public Client? ShowClientCount()
+    public int ShowClientCount()
     {
-        Client counter1 = new() {Count = 0};
+        int counter1 = 0;
         foreach (Client client in clientList)
         {
             if (client.ID >= 1)
-                counter1.Count++;
+                counter1++;
         }
         return counter1;
     

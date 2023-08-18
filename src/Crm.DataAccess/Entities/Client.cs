@@ -3,7 +3,6 @@ namespace Crm.DataAccess;
 
 public sealed class Client  
 {
-  public int Count {get; set;}
   public int ID {get; set;}
   private string? _firstName;
   public string FirstName

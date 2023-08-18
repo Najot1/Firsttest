@@ -236,5 +236,5 @@ if (Cr.Equals("Order"))
 // Order counter = orderService.ShowOrderPending()!;
 // Console.WriteLine("Count: {0}", counter.Count);
 
-Order counter2 = orderService.ShowOrderCount()!;
-Console.WriteLine("Order Count: {0}", counter2.Count);
+int counter2 = orderService.ShowOrderCount()!;
+Console.WriteLine("Order Count: {0}", counter2);

@@ -9,9 +9,9 @@ public interface IOrderService
     public Order? ChangeOrder(string newDescrition, int orderId);
     public Order? RemoveOrder(string removeOrder, int orderId);
     public Order? SetState( OrderState orderState, int orderId);
-    public Order? ShowOrderCount();
-    public Order? ShowOrderPending();
-    public Order? ShowOrderApproved();
-    public Order? ShowOrderCancelled();
+    public int ShowOrderCount();
+    public int ShowOrderPending();
+    public int ShowOrderApproved();
+    public int ShowOrderCancelled();
 
 }

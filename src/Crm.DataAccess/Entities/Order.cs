@@ -2,8 +2,6 @@ namespace Crm.DataAccess;
 
 public sealed class Order
 {
-    public int Count {get; set;}
-    
     public int ID {get; set;}
     private string? _description;
     public string Description
