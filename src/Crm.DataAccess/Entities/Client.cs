@@ -3,6 +3,7 @@ namespace Crm.DataAccess;
 
 public sealed class Client  
 {
+  private static int newID;
   public int ID {get; set;}
   private string? _firstName;
   public string FirstName
@@ -62,6 +63,11 @@ public sealed class Client
     {
       get => _password ?? string.Empty;
       set => _password = value is { Length: > 0} ? value : throw new ArgumentOutOfRangeException(nameof(value));
+    }
+
+    public Client()
+    {
+      ID = Interlocked.Increment(ref newID);
     }
 
 }

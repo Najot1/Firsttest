@@ -7,12 +7,6 @@ using Crm.BusinessLogic;
 
 // void CreateClient()
 // {
-//     Console.WriteLine("ID:");
-//     string IDClient = Console.ReadLine()!;
-//     bool isIDCorrect = int.TryParse(IDClient, out int id);
-//     if (!isIDCorrect)
-//         Console.WriteLine("Please input correct value for ID field!");
-
 //     Console.WriteLine("FistName:");
 //     string? firstName = Console.ReadLine();
 //     if (string.IsNullOrEmpty(firstName))
@@ -90,12 +84,6 @@ CreateOrder();
 
 void CreateOrder()
 {
-    Console.WriteLine("Order ID:");
-    string IdOrder = Console.ReadLine()!;
-    bool isIDCorrect = int.TryParse(IdOrder, out int id);
-    if (!isIDCorrect)
-        Console.WriteLine("Please input correct value for ID field!");
-        
     Console.WriteLine("Description:");
     string? description = Console.ReadLine();
     if (string.IsNullOrEmpty(description))
@@ -132,7 +120,6 @@ void CreateOrder()
     }
 
    Order newOrder = orderService.CreateOrder(new OrderInfo() {
-        ID = id,
         Description = description!,
         Price = price,
         Date = date,
@@ -193,10 +180,9 @@ void CreateOrder()
 
 
 
-// Console.WriteLine("Enter Order Id and Description name:");
-// int orderId = Convert.ToInt16(Console.ReadLine());
+// Console.WriteLine("Enter Description name:");
 // string description = Console.ReadLine()!;
-// Order order = orderService.FindOrder(id!, description!)!;
+// Order order = orderService.FindOrder(description!)!;
 
 // Console.WriteLine("Order Info: {0}", string.Join(' ', order.Id, order.Description, order.Price));
 // Console.WriteLine("Order Date: {0}", order.Date);
@@ -209,14 +195,13 @@ void CreateOrder()
 
 // Console.WriteLine("Create:"); 
 // string Create = Console.ReadLine()!;
-// if (Create.Equals("Client"))
+// while (Create.Equals("Client"))
 // {
 //     CreateClient();
 //     if (Create.Equals("Order"))
-//     {
 //         CreateOrder();
-//     }
-//     else return;
+//     if (Create == null) 
+//         break;
 // }
 
 // Console.WriteLine("Enter Order Id and Order State:");
@@ -225,16 +210,24 @@ void CreateOrder()
 // Order order = orderService.SetState(newOrderState, orderId)!;
 // Console.WriteLine("Order State: {0}", order.State);
 
-Console.WriteLine("Create:");
-string Cr = Console.ReadLine()!;
-if (Cr.Equals("Order"))
-{
-    CreateOrder();
-
-}
+// Console.WriteLine("Create:");
+// string Cr = Console.ReadLine()!;
+// while (Cr.Equals("Order"))
+// {
+//     CreateOrder();
+//     if (Cr == null);
+//     break;
+// }
 
 // Order counter = orderService.ShowOrderPending()!;
 // Console.WriteLine("Count: {0}", counter.Count);
 
-int counter2 = orderService.ShowOrderCount()!;
-Console.WriteLine("Order Count: {0}", counter2);
+// int counter2 = orderService.ShowOrderCount()!;
+// Console.WriteLine("Order Count: {0}", counter2);
+
+// Console.WriteLine("Order ID and new Description:");
+// int orderId = Convert.ToInt16(Console.ReadLine());
+// string newDescrition = Console.ReadLine()!;
+// Order order = orderService.ChangeOrder(orderId, newDescrition)!;
+// Console.WriteLine("ID: {0}", order.ID);
+// Console.WriteLine("Description: {0}", order.Description);

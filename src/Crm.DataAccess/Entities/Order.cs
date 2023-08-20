@@ -2,7 +2,8 @@ namespace Crm.DataAccess;
 
 public sealed class Order
 {
-    public int ID {get; set;}
+    private static int newID;
+    public int ID {get; private set;}
     private string? _description;
     public string Description
     {
@@ -32,5 +33,10 @@ public sealed class Order
     
     public TypeOfDelivery Delivery {get; set;}
     public OrderState State {get; set;}
+
+    public Order()
+    {
+        ID = Interlocked.Increment(ref newID);
+    }
 
 }

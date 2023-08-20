@@ -2,14 +2,13 @@ using Crm.DataAccess;
 
 namespace Crm.BusinessLogic;
 
-public sealed class OrderService : IOrderService
+public sealed class OrderService : IOrderService 
 {
     private readonly List<Order> orderList = new();
     public Order CreateOrder(OrderInfo orderInfo)
     {
         Order order = new()
         {
-            ID = orderInfo.ID,
             Description = orderInfo.Description,
             Price = orderInfo.Price,
             Date = orderInfo.Date,
@@ -23,21 +22,20 @@ public sealed class OrderService : IOrderService
         return order;
        
     }
-    public Order? FindOrder(int orderId, string description)
+    public Order? FindOrder(string description)
     {
-        if (orderId is <= 0) throw new ArgumentNullException(nameof(orderId));
         if (description is not {Length: > 0}) throw new ArgumentNullException(nameof(description));
     
         foreach (Order order in orderList)
         {
-            if (order.ID.Equals(orderId) && order.Description.Equals(description))
+            if (order.Description.Equals(description))
             return order; 
         }
 
         return null;
     }
 
-    public Order? ChangeOrder(string newDescrition, int orderId)
+    public Order? ChangeOrder(int orderId, string newDescrition)
     {
         if (orderId is <= 0) throw new ArgumentNullException(nameof(orderId));
         if (newDescrition is not {Length: > 0}) throw new ArgumentNullException(nameof(newDescrition));
@@ -53,10 +51,9 @@ public sealed class OrderService : IOrderService
         return null;
     }
 
-    public Order? RemoveOrder(string removeOrder, int orderId)
+    public Order? RemoveOrder(int orderId)
     {
         if (orderId is <= 0) throw new ArgumentNullException(nameof(orderId));
-        if (removeOrder is not {Length: > 0}) throw new ArgumentNullException(nameof(removeOrder));
         Order? orderToDelete = null;
 
         foreach (Order order in orderList)

@@ -12,7 +12,6 @@ public sealed class ClientService : IClientService
     {
         Client client = new()
         {
-            ID = clientInfo.ID,
             FirstName = clientInfo.FirstName,
             LastName = clientInfo.LastName,
             MiddleName = clientInfo.MiddleName,
@@ -70,7 +69,7 @@ public sealed class ClientService : IClientService
 
         foreach (Client client in clientList)
         {
-            if (client.ID == clientId ) 
+            if (client.ID == clientId) 
             {
                 clientToDelete = client;
                 break;
