@@ -1,6 +1,6 @@
 namespace Crm.DataAccess;
 
-public enum TypeOfDelivery
+public enum DeliveryType
 {
     Express,
     Standard,

@@ -2,130 +2,38 @@ using Crm.DataAccess;
 
 namespace Crm.BusinessLogic;
 
-public sealed class OrderService : IOrderService 
+public sealed class OrderService : IOrderService
 {
-    private readonly List<Order> orderList = new();
-    public Order CreateOrder(OrderInfo orderInfo)
-    {
-        Order order = new()
-        {
-            Description = orderInfo.Description,
-            Price = orderInfo.Price,
-            Date = orderInfo.Date,
-            Address = orderInfo.Address,
-            Delivery = orderInfo.Delivery,
-            State = orderInfo.State
-        };
-    
-        orderList.Add(order);
-        
-        return order;
-       
-    }
-    public Order? FindOrder(string description)
-    {
-        if (description is not {Length: > 0}) throw new ArgumentNullException(nameof(description));
-    
-        foreach (Order order in orderList)
-        {
-            if (order.Description.Equals(description))
-            return order; 
-        }
+    private readonly IOrderRepository _orderRepository;
 
-        return null;
+    public OrderService(IOrderRepository orderRepository)
+    {
+        _orderRepository = orderRepository;
     }
 
-    public Order? ChangeOrder(int orderId, string newDescrition)
+    public bool CreateOrder(Order order)
     {
-        if (orderId is <= 0) throw new ArgumentNullException(nameof(orderId));
-        if (newDescrition is not {Length: > 0}) throw new ArgumentNullException(nameof(newDescrition));
-        foreach (Order order in orderList)
-        {
-            if (order.ID == orderId)
-            {
-                order.Description = newDescrition;
-                return order;
-            }
-        }
-
-        return null;
+        return _orderRepository.CreateOrder(order);
     }
 
-    public Order? RemoveOrder(int orderId)
+    public bool FindOrder(string description)
     {
-        if (orderId is <= 0) throw new ArgumentNullException(nameof(orderId));
-        Order? orderToDelete = null;
-
-        foreach (Order order in orderList)
-        {
-            if (order.ID == orderId)
-            {
-                orderToDelete = order;
-                break;
-            }
-        }
-        if (orderToDelete != null)
-        {
-            orderList.Remove(orderToDelete);
-        }
-
-        return null;
+        return _orderRepository.FindOrder(description);
     }
 
-    public Order? SetState(OrderState newOrderState, int orderId)
+    public bool EditOrder(long orderId, string newDescrition)
     {
-        if (orderId is <= 0) throw new ArgumentNullException(nameof(orderId));
-        foreach (Order order in orderList)
-        {
-            if (order.ID == orderId)
-            {
-                order.State = newOrderState;
-                return order;
-            }
-        }
-        return null;
+       return _orderRepository.EditOrder(orderId, newDescrition);
     }
 
-    public int ShowOrderCount()
+    public bool RemoveOrder(long orderId)
     {
-        int counter2 = 0;
-        foreach (Order order in orderList)
-        {
-            if (order.ID >= 1 ) 
-                counter2++;
-        }
-        return counter2;
-    
+        return _orderRepository.RemoveOrder(orderId);
     }
-    public int ShowOrderPending()
+
+    public bool UpdateOrderState(OrderState newOrderState, long orderId)
     {
-        int counter3 = 0;
-        foreach (Order order in orderList)
-        {
-            if (order.State == OrderState.Pending)
-                counter3++;
-        }
-        return counter3;
-    }
-    public int ShowOrderApproved()
-    {
-        int counter4 = 0;
-        foreach (Order order in orderList)
-        {
-            if (order.State == OrderState.Approved)
-                counter4++;
-        }
-        return counter4;
-    }
-    public int ShowOrderCancelled()
-    {
-        int counter5 = 0;
-        foreach (Order order in orderList)
-        {
-            if (order.State == OrderState.Cancelled)
-                counter5++;
-        }
-        return counter5;
+        return _orderRepository.UpdateOrderState(newOrderState, orderId);
     }
 
 }

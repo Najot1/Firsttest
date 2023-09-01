@@ -4,14 +4,10 @@ namespace Crm.BusinessLogic;
 
 public interface IOrderService
 {
-    public Order CreateOrder(OrderInfo orderInfo);
-    public Order? FindOrder(string description);
-    public Order? ChangeOrder(int orderId, string newDescrition);
-    public Order? RemoveOrder(int orderId);
-    public Order? SetState(OrderState orderState, int orderId);
-    public int ShowOrderCount();
-    public int ShowOrderPending();
-    public int ShowOrderApproved();
-    public int ShowOrderCancelled();
+    public bool CreateOrder(Order order);
+    public bool FindOrder(string description);
+    public bool EditOrder(long orderId, string newDescrition);
+    public bool RemoveOrder(long orderId);
+    public bool UpdateOrderState(OrderState orderState, long orderId);
 
 }

@@ -5,92 +5,30 @@ namespace Crm.BusinessLogic;
 
 public sealed class ClientService : IClientService
 {
+    private readonly IClientRepository _clientRepository;
 
-    private readonly List<Client> clientList = new();
-
-    public Client CreateClient(ClientInfo clientInfo)
+    public ClientService(IClientRepository clientRepository)
     {
-        Client client = new()
-        {
-            FirstName = clientInfo.FirstName,
-            LastName = clientInfo.LastName,
-            MiddleName = clientInfo.MiddleName,
-            Age = clientInfo.Age,
-            PassportNumber = clientInfo.PassportNumber,
-            Gender = clientInfo.Gender,
-            Phone = clientInfo.Phone,
-            Email = clientInfo.Email,
-            Password = clientInfo.Password
-        };
-
-
-        clientList.Add(client);
-        
-        return client; 
+        _clientRepository = clientRepository;
     }
 
-    public Client? FindClient(string firstName, string lastName)
+    public bool CreateClient(Client client)
     {
-        if (firstName is not {Length: > 0}) throw new ArgumentNullException(nameof(firstName));
-        if (lastName is not {Length: > 0}) throw new ArgumentNullException(nameof(lastName));
-          
-        foreach (Client client in clientList)
-        {
-            if (client.FirstName.Equals(firstName) && client.LastName.Equals(lastName))
-            return client; 
-        }
-
-        return null;
+        return _clientRepository.CreateClient(client);
+    }
+    public bool FindClient(string firstName, string lastName)
+    {
+        return _clientRepository.FindClient(firstName, lastName);
     }
 
-    public Client? ChangeClient(string newFirstName, string newLastName, int clientId)
+    public bool EditClient(string newFirstName, string newLastName, long clientId)
     {
-        if (clientId is <= 0) throw new ArgumentNullException(nameof(clientId));
-        if (newFirstName is not {Length: > 0}) throw new ArgumentNullException(nameof(newFirstName));
-        if (newLastName is not {Length: > 0}) throw new ArgumentNullException(nameof(newLastName));
-        foreach (Client client in clientList)
-        {
-            if (client.ID == clientId)
-            {
-                client.FirstName = newFirstName;
-                client.LastName = newLastName;
-                return client;
-            }
-        }
-
-        return null;
+        return _clientRepository.EditClient(newFirstName, newLastName, clientId);
     }
 
-    public Client? RemoveClient(string removeClient, int clientId)
+   public bool RemoveClient(string firstName, string lastName)
     {
-        if (clientId is <= 0) throw new ArgumentNullException(nameof(clientId));
-        if (removeClient is not {Length: > 0}) throw new ArgumentNullException(nameof(removeClient));
-        Client? clientToDelete = null;
-
-        foreach (Client client in clientList)
-        {
-            if (client.ID == clientId) 
-            {
-                clientToDelete = client;
-                break;
-            }
-        }
-        if (clientToDelete != null)
-        {
-            clientList.Remove(clientToDelete);
-        }
-        
-        return null;
+        return _clientRepository.RemoveClient(firstName, lastName);
     }
-    public int ShowClientCount()
-    {
-        int counter1 = 0;
-        foreach (Client client in clientList)
-        {
-            if (client.ID >= 1)
-                counter1++;
-        }
-        return counter1;
     
-    }
 }

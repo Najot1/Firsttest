@@ -2,16 +2,15 @@ namespace Crm.DataAccess;
 
 public sealed class Order
 {
-    private static int newID;
-    public int ID {get; private set;}
+    public long Id {get; set;}
     private string? _description;
     public string Description
     {
         get => _description ?? string.Empty;
         set => _description = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
-    private short _price;
-    public  short Price
+    private decimal _price;
+    public  decimal Price
     {
         get => _price;
         set => _price = value >= 0 ? value : throw new ArgumentOutOfRangeException(nameof(value));
@@ -31,12 +30,8 @@ public sealed class Order
         set => _address = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
     
-    public TypeOfDelivery Delivery {get; set;}
+    public DeliveryType Delivery {get; set;}
     public OrderState State {get; set;}
 
-    public Order()
-    {
-        ID = Interlocked.Increment(ref newID);
-    }
 
 }
