@@ -136,60 +136,6 @@ void CreateOrder()
 
 
 
-// Console.WriteLine("Enter new First and Last names:");
-// string newFirstName = Console.ReadLine()!;
-// string newLastName = Console.ReadLine()!;
-// int clientId = Convert.ToInt16(Console.ReadLine());
-
-// Client client = clientService.ChangeClient(newFirstName!, newLastName!, clientId);
-
-// Console.WriteLine("Client Name: {0}", string.Join(' ', client.FirstName, client.MiddleName, client.LastName));
-// Console.WriteLine("Client Age: {0}", client.Age);
-// Console.WriteLine("Client Passport Number: {0}", client.PassportNumber);
-// Console.WriteLine("Client Phone:{0}", client.Phone);
-// Console.WriteLine("Client Email and Password:{0}", string.Join(' ',client.Email, client.Password));
-
-
-
-
-// Console.WriteLine("Remove:");
-// string removeClient = Console.ReadLine()!;
-// int clientId = Convert.ToInt16(Console.ReadLine());
-// Client clientToDelete = clientService.RemoveClient(removeClient, clientId);
-
-
-
-    
-
-
-// Console.WriteLine("Enter Client first and last name:");
-// string firstName = Console.ReadLine()!;
-// string lastName = Console.ReadLine()!;
-// Client client = clientService.FindClient(firstName!, lastName!)!;
-
-// Console.WriteLine("Client Name: {0}", string.Join(' ', client.FirstName, client.MiddleName, client.LastName));
-// Console.WriteLine("Client Age: {0}", client.Age);
-// Console.WriteLine("Client Passport Number: {0}", client.PassportNumber);
-// Console.WriteLine("Client Phone:{0}", client.Phone);
-// Console.WriteLine("Client Email and Password:{0}", string.Join(' ',client.Email, client.Password));
-
-
-// Console.WriteLine("|||||||||||||||||||||||||||||||");
-
-
-
-// Console.WriteLine("Enter Description name:");
-// string description = Console.ReadLine()!;
-// Order order = orderService.FindOrder(description!)!;
-
-// Console.WriteLine("Order Info: {0}", string.Join(' ', order.Id, order.Description, order.Price));
-// Console.WriteLine("Order Date: {0}", order.Date);
-// Console.WriteLine("Order Address: {0}", order.Address);
-// Console.WriteLine("Order Delivery Type: {0}", order.Delivery); 
-
-
-
-
 
 // Console.WriteLine("Create:"); 
 // string Create = Console.ReadLine()!;
@@ -205,31 +151,3 @@ void CreateOrder()
 //         break;
 //     }
 // }
-
-// Console.WriteLine("Enter Order Id and Order State:");
-// int orderId = Convert.ToInt16(Console.ReadLine());
-// OrderState newOrderState = (OrderState)int.Parse(Console.ReadLine()!);
-// Order order = orderService.SetState(newOrderState, orderId)!;
-// Console.WriteLine("Order State: {0}", order.State);
-
-// Console.WriteLine("Create:");
-// string Cr = Console.ReadLine()!;
-// while (Cr.Equals("Order"))
-// {
-//     CreateOrder();
-//     if (Cr is null);
-//     break;
-// }
-
-// Order counter = orderService.ShowOrderPending()!;
-// Console.WriteLine("Count: {0}", counter.Count);
-
-// int counter2 = orderService.ShowOrderCount()!;
-// Console.WriteLine("Order Count: {0}", counter2);
-
-// Console.WriteLine("Order ID and new Description:");
-// int orderId = Convert.ToInt16(Console.ReadLine());
-// string newDescrition = Console.ReadLine()!;
-// Order order = orderService.ChangeOrder(orderId, newDescrition)!;
-// Console.WriteLine("ID: {0}", order.ID);
-// Console.WriteLine("Description: {0}", order.Description);
