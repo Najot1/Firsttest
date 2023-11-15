@@ -1,3 +1,4 @@
+
 namespace Crm.DataAccess;
 
 public sealed class ClientRepository : IClientRepository
@@ -58,6 +59,29 @@ public sealed class ClientRepository : IClientRepository
     }
     public int GetClientCount() => _clients.Count;
 
+    public ValueTask<bool> CreateClientAsync(Client client, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
 
+    public ValueTask<bool> FindClientAsync(string firstName, string lastName, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<bool> EditClientAsync(string newFirstName, string newLastName, long clientId, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<bool> RemoveClientAsync(string firstName, string lastName, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<int> GetClientCountAsync(CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
 }
 

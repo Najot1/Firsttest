@@ -10,12 +10,10 @@ public static class ClientExtension
             client.Id,
             client.FirstName,
             client.LastName,
-            client.MiddleName,
-            client.PassportNumber,
+            client.MiddleName!,
+            client.PassportNumber!,
             client.Age,
             client.Gender.ToString(),
-            client.Phone,
-            client.Email,
-            client.Password);
+            client.Phone);
     }
 }

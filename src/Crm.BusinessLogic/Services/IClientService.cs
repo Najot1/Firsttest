@@ -4,8 +4,9 @@ namespace Crm.BusinessLogic;
 
 public interface IClientService
 {
-    public bool CreateClient(Client client);
-    public bool FindClient(string firstName, string lastName);
-    public bool EditClient(string newFirstName, string newLastName, long clientId);
-    public bool RemoveClient(string firstName, string lastName);
+    public ValueTask<bool> CreateClientAsync(Client client, CancellationToken token = default);
+    public ValueTask<bool> FindClientAsync(string firstName, string lastName, CancellationToken token = default);
+    public ValueTask<bool> EditClientAsync(string newFirstName, string newLastName, long clientId, CancellationToken token = default);
+    public ValueTask<bool> RemoveClientAsync(string firstName, string lastName, CancellationToken token = default);
+    
 }

@@ -2,10 +2,10 @@ namespace Crm.DataAccess;
 
 public interface IClientRepository
 {
-    bool CreateClient(Client client);
-    bool FindClient(string firstName, string lastName);
-    bool EditClient(string newFirstName, string newLastName, long clientId);
-    bool RemoveClient(string firstName, string lastName);
-    int GetClientCount();
+    ValueTask<bool> CreateClientAsync(Client client, CancellationToken token = default);
+    ValueTask<bool> FindClientAsync(string firstName, string lastName, CancellationToken token = default);
+    ValueTask<bool> EditClientAsync(string newFirstName, string newLastName, long clientId, CancellationToken token = default);
+    ValueTask<bool> RemoveClientAsync(string firstName, string lastName, CancellationToken token = default);
+    ValueTask<int> GetClientCountAsync( CancellationToken token = default);
 }
 

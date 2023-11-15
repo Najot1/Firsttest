@@ -12,23 +12,23 @@ public sealed class ClientService : IClientService
         _clientRepository = clientRepository;
     }
 
-    public bool CreateClient(Client client)
+    public ValueTask<bool> CreateClientAsync(Client client, CancellationToken token = default)
     {
-        return _clientRepository.CreateClient(client);
-    }
-    public bool FindClient(string firstName, string lastName)
-    {
-        return _clientRepository.FindClient(firstName, lastName);
+        return _clientRepository.CreateClientAsync(client.ToClientInfo(), token);
     }
 
-    public bool EditClient(string newFirstName, string newLastName, long clientId)
+    public ValueTask<bool> FindClientAsync(string firstName, string lastName, CancellationToken token = default)
     {
-        return _clientRepository.EditClient(newFirstName, newLastName, clientId);
+        return _clientRepository.FindClientAsync(firstName, lastName, token);
     }
 
-   public bool RemoveClient(string firstName, string lastName)
+    public ValueTask<bool> EditClientAsync(string newFirstName, string newLastName, long clientId, CancellationToken token = default)
     {
-        return _clientRepository.RemoveClient(firstName, lastName);
+        return _clientRepository.EditClientAsync(newFirstName, newLastName, clientId, token);
     }
-    
+
+    public ValueTask<bool> RemoveClientAsync(string firstName, string lastName, CancellationToken token = default)
+    {
+        return _clientRepository.RemoveClientAsync(firstName, lastName, token);
+    }
 }

@@ -1,3 +1,4 @@
+
 namespace Crm.DataAccess;
 
 public sealed class OrderRepository : IOrderRepository
@@ -17,8 +18,6 @@ public sealed class OrderRepository : IOrderRepository
             Id = _id++,
             Description = order.Description,
             Price = order.Price,
-            Date = order.Date,
-            Address = order.Address,
             Delivery = order.Delivery,
             State = order.State
         };
@@ -66,5 +65,40 @@ public sealed class OrderRepository : IOrderRepository
         order.State = orderState;
 
         return true;
+    }
+
+    public ValueTask<bool> CreateOrderAsync(Order order, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<bool> FindOrderAsync(string description, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<bool> EditOrderAsync(long orderId, string newDescrition, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<bool> RemoveOrderAsync(long orderId, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<bool> UpdateOrderStateAsync(OrderState orderState, long orderId, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<int> GetOrderCountAsync(CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<int> GetOrderCountAsync(OrderState orderState, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
     }
 }

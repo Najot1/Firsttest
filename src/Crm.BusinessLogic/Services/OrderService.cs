@@ -11,29 +11,28 @@ public sealed class OrderService : IOrderService
         _orderRepository = orderRepository;
     }
 
-    public bool CreateOrder(Order order)
+    public ValueTask<bool> CreateOrderAsync(Order order, CancellationToken token = default)
     {
-        return _orderRepository.CreateOrder(order);
+        return _orderRepository.CreateOrderAsync(order.ToOrderInfo, token);
     }
 
-    public bool FindOrder(string description)
+    public ValueTask<bool> FindOrderAsync(string description, CancellationToken token = default)
     {
-        return _orderRepository.FindOrder(description);
+        return _orderRepository.FindOrderAsync(description, token);
     }
 
-    public bool EditOrder(long orderId, string newDescrition)
+    public ValueTask<bool> EditOrderAsync(long orderId, string newDescrition, CancellationToken token = default)
     {
-       return _orderRepository.EditOrder(orderId, newDescrition);
+        return _orderRepository.EditOrderAsync(orderId, newDescrition, token);
     }
 
-    public bool RemoveOrder(long orderId)
+    public ValueTask<bool> RemoveOrderAsync(long orderId, CancellationToken token = default)
     {
-        return _orderRepository.RemoveOrder(orderId);
+        return _orderRepository.RemoveOrderAsync(orderId, token);
     }
 
-    public bool UpdateOrderState(OrderState newOrderState, long orderId)
+    public ValueTask<bool> UpdateOrderStateAsync(OrderState orderState, long orderId, CancellationToken token = default)
     {
-        return _orderRepository.UpdateOrderState(newOrderState, orderId);
+        return _orderRepository.UpdateOrderStateAsync(orderState, orderId, token);
     }
-
 }
