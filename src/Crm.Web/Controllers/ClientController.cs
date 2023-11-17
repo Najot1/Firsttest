@@ -31,8 +31,8 @@ public sealed class ClientController : ControllerBase
         => _clientService.FindClientAsync(firstName, lastName, token);
 
     [HttpDelete]
-    public ValueTask<bool> DeleteClient([FromQuery] string firstName, [FromQuery] string lastName, CancellationToken token)
-        => _clientService.RemoveClientAsync(firstName, lastName, token);
+    public ValueTask<bool> DeleteClient([FromQuery] long clientId, CancellationToken token)
+        => _clientService.RemoveClientAsync(clientId, token);
 
     [HttpGet("Config")]
     [AllowAnonymous]

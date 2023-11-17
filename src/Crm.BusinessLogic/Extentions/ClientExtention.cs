@@ -2,7 +2,7 @@ using Crm.DataAccess;
 
 namespace Crm.BusinessLogic;
 
-public static class ClientExtension
+public static  class ClientExtension
 {
     public static ClientInfo ToClientInfo(this Client client)
     {
@@ -11,9 +11,10 @@ public static class ClientExtension
             client.FirstName,
             client.LastName,
             client.MiddleName!,
+            client.Phone,
             client.PassportNumber!,
             client.Age,
-            client.Gender.ToString(),
-            client.Phone);
+            client.Gender.ToString()
+            );
     }
 }

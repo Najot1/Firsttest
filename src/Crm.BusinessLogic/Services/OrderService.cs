@@ -13,7 +13,7 @@ public sealed class OrderService : IOrderService
 
     public ValueTask<bool> CreateOrderAsync(Order order, CancellationToken token = default)
     {
-        return _orderRepository.CreateOrderAsync(order.ToOrderInfo, token);
+        return _orderRepository.CreateOrderAsync(order.ToOrderInfo(), token);
     }
 
     public ValueTask<bool> FindOrderAsync(string description, CancellationToken token = default)

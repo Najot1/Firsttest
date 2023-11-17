@@ -10,7 +10,8 @@ public static class OrderExtension
             order.Id,
             order.Description,
             order.Price,
-            order.DeliveryId.ToString(),
+            order.Address,
+            order.Delivery.ToString(),
             order.State.ToString());
     }
 }

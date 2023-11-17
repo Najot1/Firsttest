@@ -1,4 +1,4 @@
-
+using Microsoft.EntityFrameworkCore;
 namespace Crm.DataAccess;
 
 public sealed class EfCoreClientRepository : IClientRepository
@@ -16,26 +16,35 @@ public sealed class EfCoreClientRepository : IClientRepository
     }
     public async ValueTask<bool> CreateClientAsync(Client client, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        await _db.Clients.AddAsync(client, token);
+        return await _db.SaveChangesAsync(token) > 0;
     }
 
-    public ValueTask<bool> EditClientAsync(string newFirstName, string newLastName, long clientId, CancellationToken token = default)
+    public async ValueTask<bool> EditClientAsync(string newFirstName, string newLastName, long clientId, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        Client client = await _db.Clients.SingleAsync(c => c.Id == clientId);
+        client.FirstName = newFirstName;
+        client.LastName = newLastName;
+        return await _db.SaveChangesAsync(token) > 0;
     }
 
-    public ValueTask<bool> FindClientAsync(string firstName, string lastName, CancellationToken token = default)
+    public async ValueTask<bool> FindClientAsync(string firstName, string lastName, CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        Client client = await _db.Clients.SingleAsync(o => o.FirstName == firstName && o.LastName == lastName, token);
+        return await _db.SaveChangesAsync(token) > 0;
+    }
+
+    public async ValueTask<bool> RemoveClientAsync(long clientId, CancellationToken token = default)
+    {
+        Client clientIndex = await _db.Clients.SingleAsync(c => c.Id == clientId);
+        _db.Clients.Remove(clientIndex);
+        return await _db.SaveChangesAsync(token) > 0;
     }
 
     public ValueTask<int> GetClientCountAsync(CancellationToken token = default)
     {
-        throw new NotImplementedException();
+        return new(_db.Clients.CountAsync(token));
     }
 
-    public ValueTask<bool> RemoveClientAsync(string firstName, string lastName, CancellationToken token = default)
-    {
-        throw new NotImplementedException();
-    }
+    
 }

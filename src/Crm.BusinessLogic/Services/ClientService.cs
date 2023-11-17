@@ -27,8 +27,8 @@ public sealed class ClientService : IClientService
         return _clientRepository.EditClientAsync(newFirstName, newLastName, clientId, token);
     }
 
-    public ValueTask<bool> RemoveClientAsync(string firstName, string lastName, CancellationToken token = default)
+    public ValueTask<bool> RemoveClientAsync(long clientId, CancellationToken token = default)
     {
-        return _clientRepository.RemoveClientAsync(firstName, lastName, token);
+        return _clientRepository.RemoveClientAsync(clientId, token);
     }
 }

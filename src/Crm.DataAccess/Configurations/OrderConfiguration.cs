@@ -9,11 +9,8 @@ public sealed class OrderConfiguration : IEntityTypeConfiguration<Order>
     {
         builder
             .HasOne(c => c.Client)
-            .WithMany(c => c.Orders);
+            .WithMany(c => c.Orders)
+            .IsRequired();
 
-        builder
-            .HasOne(d => d.Delivery)
-            .WithOne(d => d.Order)
-            .HasForeignKey<Delivery>(d => d.OrderId);
     }
 }

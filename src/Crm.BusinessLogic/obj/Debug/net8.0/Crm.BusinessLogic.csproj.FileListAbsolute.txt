@@ -1,0 +1,6 @@
+C:\Users\user\Documents\crm-practice\src\Crm.BusinessLogic\obj\Debug\net8.0\Crm.BusinessLogic.csproj.AssemblyReference.cache
+C:\Users\user\Documents\crm-practice\src\Crm.BusinessLogic\obj\Debug\net8.0\Crm.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\crm-practice\src\Crm.BusinessLogic\obj\Debug\net8.0\Crm.BusinessLogic.AssemblyInfoInputs.cache
+C:\Users\user\Documents\crm-practice\src\Crm.BusinessLogic\obj\Debug\net8.0\Crm.BusinessLogic.AssemblyInfo.cs
+C:\Users\user\Documents\crm-practice\src\Crm.BusinessLogic\obj\Debug\net8.0\Crm.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\crm-practice\src\Crm.BusinessLogic\obj\Debug\net8.0\Crm.BusinessLogic.sourcelink.json

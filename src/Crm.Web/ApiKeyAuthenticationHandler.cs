@@ -9,6 +9,7 @@ public sealed class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAu
 {
     private readonly ApiKeyAuthenticationOptions _apiKeyOptions;
 
+    [Obsolete]
     public ApiKeyAuthenticationHandler(
         IOptionsMonitor<ApiKeyAuthenticationOptions> optionsMonitor,
         ILoggerFactory loggerFactory,

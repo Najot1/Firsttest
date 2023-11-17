@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
+    "net8.0": {
       "Microsoft.EntityFrameworkCore/7.0.11": {
         "type": "package",
         "dependencies": {
@@ -271,7 +271,7 @@
       },
       "Crm.BusinessLogic/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Crm.DataAccess": "1.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0"
@@ -285,7 +285,7 @@
       },
       "Crm.DataAccess/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
+        "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11"
@@ -705,7 +705,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
+    "net8.0": [
       "Crm.BusinessLogic >= 1.0.0",
       "Crm.DataAccess >= 1.0.0"
     ]
@@ -726,14 +726,14 @@
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {
             "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm.BusinessLogic\\Crm.BusinessLogic.csproj": {
               "projectPath": "C:\\Users\\user\\Documents\\crm-practice\\src\\Crm.BusinessLogic\\Crm.BusinessLogic.csproj"
@@ -751,8 +751,8 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "imports": [
           "net461",
           "net462",
@@ -769,7 +769,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.310\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
