@@ -12,9 +12,9 @@ public sealed class ClientService : IClientService
         _clientRepository = clientRepository;
     }
 
-    public ValueTask<bool> CreateClientAsync(Client client, CancellationToken token = default)
+    public ValueTask<bool> CreateClientAsync(ClientInfo clientInfo, CancellationToken token = default)
     {
-        return _clientRepository.CreateClientAsync(client.ToClientInfo(), token);
+        return _clientRepository.CreateClientAsync(clientInfo.ToClient(), token);   
     }
 
     public ValueTask<bool> FindClientAsync(string firstName, string lastName, CancellationToken token = default)

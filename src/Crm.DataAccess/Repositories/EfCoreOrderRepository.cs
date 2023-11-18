@@ -10,10 +10,6 @@ public sealed class EfCoreOrderRepository : IOrderRepository
         _db = crmDbContext;
     }
 
-    public EfCoreOrderRepository()
-    {
-        _db = new();
-    }
     public async ValueTask<bool> CreateOrderAsync(Order order, CancellationToken token = default)
     {
 

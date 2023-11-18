@@ -4,14 +4,14 @@ namespace Crm.BusinessLogic;
 
 public static class OrderExtension
 {
-    public static OrderInfo ToOrderInfo(this Order order)
+    public static Order ToOrder(this OrderInfo orderInfo)
     {
         return new(
-            order.Id,
-            order.Description,
-            order.Price,
-            order.Address,
-            order.Delivery.ToString(),
-            order.State.ToString());
+            orderInfo.Id,
+            orderInfo.Description,
+            orderInfo.Price,
+            orderInfo.Address,
+            orderInfo.Delivery.ToDeliveryEnum(),
+            orderInfo.State.ToStateEnum());
     }
 }

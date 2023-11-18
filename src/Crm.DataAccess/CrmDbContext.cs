@@ -3,21 +3,19 @@ namespace Crm.DataAccess;
 
 public sealed class CrmDbContext : DbContext
 {
-    public DbSet<Client> Clients {get; set;}
-    public DbSet<Order> Orders {get; set;}
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public CrmDbContext(DbContextOptions<CrmDbContext> options)
+        : base(options)
     {
-        if (optionsBuilder.IsConfigured)
-            return;
 
-        optionsBuilder.UseNpgsql(DatabaseHelper.ConnectionString);
     }
+
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<Client> Clients { get; set; }
+   
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new ClientConfiguration());
         modelBuilder.ApplyConfiguration(new OrderConfiguration());
     }
-
 }

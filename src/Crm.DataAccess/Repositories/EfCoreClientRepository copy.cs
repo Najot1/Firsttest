@@ -10,10 +10,6 @@ public sealed class EfCoreClientRepository : IClientRepository
         _db = crmDbContext;
     }
 
-    public EfCoreClientRepository()
-    {
-        _db = new();
-    }
     public async ValueTask<bool> CreateClientAsync(Client client, CancellationToken token = default)
     {
         await _db.Clients.AddAsync(client, token);

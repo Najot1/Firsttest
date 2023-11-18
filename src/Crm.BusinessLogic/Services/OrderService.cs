@@ -11,9 +11,9 @@ public sealed class OrderService : IOrderService
         _orderRepository = orderRepository;
     }
 
-    public ValueTask<bool> CreateOrderAsync(Order order, CancellationToken token = default)
+    public ValueTask<bool> CreateOrderAsync(OrderInfo orderInfo, CancellationToken token = default)
     {
-        return _orderRepository.CreateOrderAsync(order.ToOrderInfo(), token);
+        return _orderRepository.CreateOrderAsync(orderInfo.ToOrder(), token);
     }
 
     public ValueTask<bool> FindOrderAsync(string description, CancellationToken token = default)
